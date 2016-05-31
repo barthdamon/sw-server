@@ -1,0 +1,27 @@
+{
+  "name": "sw-server",
+  "version": "1.0.0",
+  "description": "server for the swipedright mobile game",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "reset-notifier-task": "node bin/reset_notifier.js",
+    "rank-notifier-task": "node bin/rank_notifier.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@barthdamon",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "body-parser": "^1.15.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "lodash": "^4.13.1",
+    "mongoose": "^4.4.19",
+    "request-promise": "^3.0.0"
+  },
+  "devDependencies": {
+    "mongoose": "^4.4.19"
+  }
+}
