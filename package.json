@@ -13,10 +13,12 @@
   "author": "@barthdamon",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^0.8.6",
     "bluebird": "^3.4.0",
     "body-parser": "^1.15.1",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
+    "jwt-simple": "^0.5.0",
     "lodash": "^4.13.1",
     "mongoose": "^4.4.19",
     "request-promise": "^3.0.0"
