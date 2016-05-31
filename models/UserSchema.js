@@ -16,27 +16,26 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.pre('save', function(next) {
-   let user = this;
 	// only hash the password if it has been modified (or is new)
-	if (!user.isModified('password')) return next();
+	if (!this.isModified('password')) return next();
 
 	// generate a salt
-	bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+	bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
 	    if (err) return next(err);
 
 	    // hash the password using our new salt
-	    bcrypt.hash(user.password, salt, function(err, hash) {
+	    bcrypt.hash(this.password, salt, (err, hash) => {
 	        if (err) return next(err);
 
 	        // override the cleartext password with the hashed one
-	        user.password = hash;
+	        this.password = hash;
 	        next();
 	    });
 	});
 });
 
 userSchema.methods.comparePassword = function(candidatePassword, callback) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
         if (err) return callback(err);
         callback(null, isMatch);
     });
@@ -44,5 +43,4 @@ userSchema.methods.comparePassword = function(candidatePassword, callback) {
 
 mongoose.model('User', userSchema);
 const User = db.model('User');
-
 module.exports = User;
